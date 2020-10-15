@@ -22,3 +22,5 @@
   - https://epidemicsonnetworks.readthedocs.io/en/latest/EoN.html
   - https://arxiv.org/pdf/2001.02436.pdf
 
+- NetworkX package:
+  - https://networkx.github.io/
