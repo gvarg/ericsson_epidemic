@@ -7,24 +7,58 @@ Szilágyi Lajos
 Varga Gábor
 """
 
+import sys
+
+v_game_id = 0
+v_max_tick = 0
+v_country_count = 0
+v_row = 0
+v_columns = 0
+v_factor_1 = 0
+v_factor_2 = 0
+v_factor_3 = 0
+v_factor_4 = 0
+
+
+
 def get_parameters(input_message):
+
+    global v_game_id
+    global v_max_tick
+    global v_country_count
+
+    global v_row
+    global v_columns
+
+    global v_factor_1
+    global v_factor_2
+    global v_factor_3
+    global v_factor_4
+
     v_input_list = input_message.split(" ")
+
+    print(v_input_list)
+
+
     if v_input_list[0] == "START":
-        print("startol")
-        return v_input_list
+        v_game_id = v_input_list[1]
+        v_max_tick = v_input_list[2]
+        v_country_count = v_input_list[3]
+        print(v_game_id)
     elif v_input_list[0] == "FACTORS":
-        print("faktoriális")
-        return v_input_list
+        v_factor_1 = v_input_list[1]
+        v_factor_2 = v_input_list[2]
+        v_factor_3 = v_input_list[3]
+        v_factor_4 = v_input_list[4]
     elif v_input_list[0] == "FIELDS":
-        print("fieldek")
-        return v_input_list
-    else:
-        print("Wrong input")
-        quit()
+        v_row = v_input_list[1]
+        v_columns = v_input_list[2]
+    elif v_input_list[0] == "FD":
+        return
 
 def calc_factor(factor):
     factor = factor * 48271 % 2147483647
-
+"""
 def healing(curr_tick, coord):
     #Clean the coordinates string
     v_coordinates = coord.replace("(","")
@@ -54,15 +88,44 @@ def infection(curr_tick, coord):
                                                 )
         ) * (factor4() % 25 + 50) / 100.0
        ) #TODO: translate it to python
+"""
+
+def get_input():
+
+    global v_game_id
+    global v_max_tick
+    global v_country_count
+
+    global v_row
+    global v_columns
+
+    global v_factor_1
+    global v_factor_2
+    global v_factor_3
+    global v_factor_4
+
+    v_input_file = open("./input/input.txt", "r")
+
+    for line in v_input_file:
+        line = line.strip("\n")
+        get_parameters(line)
+
+    print(v_game_id)
+    print(v_max_tick)
+    print(v_country_count)
+    print(v_row)
+    print(v_columns)
+    print(v_factor_1)
+    print(v_factor_2)
+    print(v_factor_3)
+    print(v_factor_4)
+
 
 
 def main():
-    for i in range(0,2):
-        input_message = input("Waiting for server message:")
-        v_input_list = get_parameters(input_message)
-        if v_input_list != "ERROR":
-            print(v_input_list)
+    global v_game_id
 
+    get_input()
 
 
 
